@@ -1,438 +1,417 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-<link href="http://ts.daumcdn.net/custom/blog/0/606/skin/images/nanumgothic.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="style.css" type="text/css" id="" media="print, projection, screen" />
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
-<title>젼짱</title>
-<script type="text/javascript"> 
-	function addRow(tbody, form) {
-		var oRow = table.insertRow();
-		oRow.onmouseover = function() {
-			table.clickedRowIndex = this.rowIndex
-		};
-		var oCell1 = oRow.insertCell();
-		var oCell2 = oRow.insertCell();
-		var oCell3 = oRow.insertCell();
-		var oCell4 = oRow.insertCell();
-		var oCell5 = oRow.insertCell();
-		var oCell6 = oRow.insertCell();
-		var oCell7 = oRow.insertCell();
-		var oCell8 = oRow.insertCell();
-		var oCell9 = oRow.insertCell();
-		var oCell10 = oRow.insertCell();
-		oCell1.innerHTML = "<input size='3' style='text-align:center;' type='text' name='index' readOnly>";
-		oCell2.innerHTML = "<input size='7' style='text-align:center;' type='text' name='p_name'>";
-		oCell3.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_1' value='0' onBlue='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
-		oCell4.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_2' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
-		oCell5.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_3' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
-		oCell6.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_4' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
-		oCell7.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_5' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
-		oCell8.innerHTML = "<input type='text' style='text-align:center;' size='7' name='total' readOnly>";
-		oCell9.innerHTML = "<input type='text' style='text-align:center;' size='7' name='rank' readOnly>";
-		oCell10.innerHTML = "<input type='button' value=' X ' onClick='delRow(tbody01, document.form)'>";
-		indexing(tbody, form);
-	}
-	function ranks(tbody, form) {
-		var datas = new Array();
-		var tot = new Array();
-		var tbodyLength = tbody.rows.length;
-		for (var i = 0; i < tbodyLength; i++) {
-			datas[i] = parseInt(form.total[i].value);
-			tot[i] = datas[i];
-		}
-		datas.sort(function(a, b) {
-			return b - a
-		});  
-		for (var i = 0; i < tbodyLength; i++) {
-			for (var k = 0; k < tbodyLength; k++) {
-				if (datas[i] == tot[k]) {  
-					form.rank[k].value = i+1; 
-					tot[k] = -1;
-					break;
-				}
-			}
-		} 
-	}
-	function bindedFunc(tbody, form){
-		computeTotalPrice(form);
-		ranks(tbody, form);
-	}
-	function ranking(tbody, form) { 
-		var datas = new Array();
-		var name = new Array();
-		var index = new Array(); 
-		var jud1 = new Array();
-		var jud2 = new Array();
-		var jud3 = new Array();
-		var jud4 = new Array();
-		var jud5 = new Array();
-		var tot = new Array();
-		var tbodyLength = tbody.rows.length;
-		for (var i = 0; i < tbodyLength; i++) {
-			datas[i] = parseInt(form.total[i].value);
-			tot[i] = datas[i];
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			name[i] = form.p_name[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			index[i] = form.index[i].value; 
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud1[i] = form.judge_1[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud2[i] = form.judge_2[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud3[i] = form.judge_3[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			jud4[i] = form.judge_4[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			jud5[i] = form.judge_5[i].value;
-		} 
-		datas.sort(function(a, b) {
-			return b - a
-		}); 
-		for (var i = 0; i < tbodyLength; i++) {
-			for (var k = 0; k < tbodyLength; k++) {
-				if (datas[i] == tot[k]) {  
-					form.index[i].value = index[k];
-					form.p_name[i].value = name[k]; 
-					form.judge_1[i].value = jud1[k];
-					form.judge_2[i].value = jud2[k];
-					form.judge_3[i].value = jud3[k];
-					form.judge_4[i].value = jud4[k];
-					form.judge_5[i].value = jud5[k];
-					form.total[i].value = tot[k];
-					form.rank[i].value = i+1; 
-					tot[k] = -1;
-					break;
-				}
-			}
-		}
-	}
-	function naming(tbody, form) { 
-		var datas = new Array();
-		var name = new Array();
-		var index = new Array(); 
-		var jud1 = new Array();
-		var jud2 = new Array();
-		var jud3 = new Array();
-		var jud4 = new Array();
-		var jud5 = new Array();
-		var rank = new Array();
-		var nam = new Array();
-		var tbodyLength = tbody.rows.length;
-		for (var i = 0; i < tbodyLength; i++) {
-			name[i] = form.p_name[i].value;
-			nam[i] = name[i];
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			datas[i] = form.total[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			index[i] = form.index[i].value; 
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud1[i] = form.judge_1[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud2[i] = form.judge_2[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud3[i] = form.judge_3[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			jud4[i] = form.judge_4[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			jud5[i] = form.judge_5[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			rank[i] = form.rank[i].value;
-		}  
-		name.sort(); 
-		for (var i = 0; i < tbodyLength; i++) {
-			for (var k = 0; k < tbodyLength; k++) {
-				if (name[i] == nam[k]) {  
-					form.index[i].value = index[k];
-					form.p_name[i].value = nam[k]; 
-					form.judge_1[i].value = jud1[k];
-					form.judge_2[i].value = jud2[k];
-					form.judge_3[i].value = jud3[k];
-					form.judge_4[i].value = jud4[k];
-					form.judge_5[i].value = jud5[k];
-					form.total[i].value = datas[k];
-					form.rank[i].value = rank[k];  
-					nam[k] = 'aaaaaaaa';
-					break;
-				}
-			}
-		}
-	}
-	function indexing2(tbody, form) { 
-		var total = new Array();
-		var name = new Array();
-		var index = new Array(); 
-		var jud1 = new Array();
-		var jud2 = new Array();
-		var jud3 = new Array();
-		var jud4 = new Array();
-		var jud5 = new Array();
-		var rank = new Array();
-		var ind = new Array();
-		var tbodyLength = tbody.rows.length;
-		for (var i = 0; i < tbodyLength; i++) {
-			index[i] = form.index[i].value;
-			ind[i] = index[i];
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			total[i] = form.total[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			name[i] = form.p_name[i].value; 
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud1[i] = form.judge_1[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud2[i] = form.judge_2[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud3[i] = form.judge_3[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			jud4[i] = form.judge_4[i].value;
-		}
-		for (var i = 0; i < tbodyLength; i++) {
-			jud5[i] = form.judge_5[i].value;
-		} 
-		for (var i = 0; i < tbodyLength; i++) {
-			rank[i] = form.rank[i].value;
-		} 
-		index.sort(function(a, b) {
-			return a - b
-		}); 
-		for (var i = 0; i < tbodyLength; i++) {
-			for (var k = 0; k < tbodyLength; k++) {
-				if (index[i] == ind[k]) {  
-					form.p_name[i].value = name[k]; 
-					form.judge_1[i].value = jud1[k];
-					form.judge_2[i].value = jud2[k];
-					form.judge_3[i].value = jud3[k];
-					form.judge_4[i].value = jud4[k];
-					form.judge_5[i].value = jud5[k];
-					form.total[i].value = total[k];
-					form.rank[i].value = rank[k]; 
-					form.index[i].value = ind[k]; 
-					ind[k] = -1;
-					break;
-				}
-			}
-		}
-	}
-	function indexing(tbody, form){
-		var tbodyLength = tbody.rows.length; 
-		for (var k = 0; k < tbodyLength; k++) {
-			form.index[k].value = k+1;
-		}
-	} 
-	function delRow(tbody, form) {
-		table.deleteRow(table.clickedRowIndex);
-		indexing(tbody, form);
-	} 
-	function toCurrency(obj) {
-		obj.value = getCurrency(obj.value);
-	} 
-	function getCurrency(value) {
-		if ((typeof value) != 'string') {
-			value = value + "";
-		}
-		var sMoney = value.replace(/,/g, "");
-		var tMoney = "";
-		var tLen = sMoney.length;
-		if (sMoney.length <= 3) {
-			return sMoney;
-		}
-		for (i = 0; i < tLen; i++) {
-			if (i != 0 && (i % 3 == tLen % 3))
-				tMoney += ",";
-			if (i < sMoney.length)
-				tMoney += sMoney.charAt(i);
-		}
-		return tMoney;
-	}
-	function isNumber(obj) {
-		return;
-	} 
-	function removeMask(obj) {
-
-		if (obj.length > 0) {
-			for (i = 0; i < obj.length; i++) {
-				obj[i].value = obj[i].value.replace(/(\,|\-|\:)/g, '');
-			}
-		} else {
-
-			obj.value = obj.value.replace(/(\,|\-|\:)/g, '');
-		}
-	} 
-	function computeTotalPrice(form) {
-		var totalPrice = 0;
-
-		removeMask(form.judge_1);
-		removeMask(form.judge_2);
-		removeMask(form.judge_3);
-		removeMask(form.judge_4);
-		removeMask(form.judge_5);
-		var chkBoxCount = countObject(form.judge_1);
-		if (chkBoxCount == 1) {
-				totalPrice = parseInt(form.judge_1.value)
-				+ parseInt(form.judge_2.value) + parseInt(form.judge_3.value) + parseInt(form.judge_4.value) + parseInt(form.judge_5.value);
-				form.total.value = totalPrice;
-		} else {
-			for (i = 0; i < chkBoxCount; i++) {
-					totalPrice = parseInt(form.judge_1[i].value)
-					+ parseInt(form.judge_2[i].value) + parseInt(form.judge_3[i].value) + parseInt(form.judge_4[i].value) + parseInt(form.judge_5[i].value);
-					form.total[i].value = totalPrice;
-			}
-		}
-		form.total_price.value = totalPrice;
-
-		toCurrency(form.judge_1);
-		toCurrency(form.judge_2);
-		toCurrency(form.judge_3);
-		toCurrency(form.judge_4);
-		toCurrency(form.judge_5);
-		if (totalPrice != "") {
-			toCurrency(form.total_price1);
-			toCurrency(form.total_price2);
-		}
-		
-		 
-	} 
-	function countObject(obj) {
-		if (obj) {
-			if (obj.length) {
-				return obj.length;
-			} else {
-				return 1;
-			}
-		} else {
-			return 0;
-		}
-	}
-	
-	function fnExcelReport(tbody, form)
-	{
-	    var tab_text="합계 및 등수 계산 <table border='1'>";
-	    var textRange; 
-	    var j=0; 
-		var tbodyLength = tbody.rows.length;   
-		tab_text=tab_text+"<tr><td>No.</td><td>Name</td><td>Judge_1</td><td>Judge_2</td><td>Judge_3</td><td>Judge_4</td><td>Judge_5</td><td>Sum</td><td>Rank</td></tr>";
-	    for(j = 0 ; j < tbodyLength ; j++) 
-	    {      
-	        tab_text=tab_text+"<tr>"+
-	        "<td>"+form.index[j].value +"</td>" +
-	        "<td>"+form.p_name[j].value +"</td>" +
-	        "<td>"+form.judge_1[j].value +"</td>" +
-	        "<td>"+form.judge_2[j].value +"</td>" +
-	        "<td>"+form.judge_3[j].value +"</td>" +
-	        "<td>"+form.judge_4[j].value +"</td>" +
-	        "<td>"+form.judge_5[j].value +"</td>" +
-	        "<td>"+form.total[j].value +"</td>" +
-	        "<td>"+form.rank[j].value +"</td>" + "</tr>"; 
-	    }
-
-	    tab_text=tab_text+"</table>";
-	    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
-	    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
-	    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
-
-	    var ua = window.navigator.userAgent;
-	    var msie = ua.indexOf("MSIE "); 
-
-	    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
-	    {
-	        txtArea1.document.open("txt/html","replace");
-	        txtArea1.document.write(tab_text);
-	        txtArea1.document.close();
-	        txtArea1.focus(); 
-	        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
-	    }  
-	    else                 //other browser not tested on IE 11
-	        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
-
-	    return (sa);
-	}
-</script>
+<title>지연</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+<noscript>
+	<link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
 </head>
 <body>
-	<div class='t3'>
-		<h3>합계 및 등수 계산 프로그램</h3><br>
-		<form name=form>
-			<div class='tblwrap'>
-				<table id=table border='0'  style="text-align:center;">
-					<thead>
-						<tr> 
-							<th width='10'>
-								<button type=button onClick="indexing2(tbody01, document.form)" class='intotal'>
-								순서 <i class="fa fa-caret-down"></i></button>
-							</th>
-							<th width='10'>
-								<button type=button onClick="naming(tbody01, document.form)" class='intotal'>
-								이름 <i class="fa fa-caret-down"></i></button>
-							</th>
-							<th width='10'>심사위원1</th>
-							<th width='10'>심사위원2</th>
-							<th width='10'>심사위원3</th>
-							<th width='10'>심사위원4</th>
-							<th width='10'>심사위원5</th>
-							<th width='5'>
-								<button type=button onClick="ranking(tbody01, document.form)" class='intotal'>
-								합계 <i class="fa fa-caret-up"></i></button>
-							</th>
-							<th width='5'>등수</th>
-							<td><input type=button value=" + " onClick="addRow(tbody01, document.form)"></td>
-						</tr>
-					</thead>
-					<tbody id="tbody01" class='tbody'>
-						<tr onMouseOver="table.clickedRowIndex=this.rowIndex"> 
-							<td><input size='7' type=text name=index style='text-align:center;' readOnly></td>
-							<td><input size='7' type=text name=p_name style='text-align:center;'></td>
-							<td><input size='7' type=text name=judge_1  
-								onBlur='ranks(tbody01, document.form)' value='0' style='text-align:center;'
-								onChange='computeTotalPrice(document.form)'></td>
-							<td><input size='7' type=text name=judge_2
-								onBlur='ranks(tbody01, document.form)' value='0' style='text-align:center;'
-								onChange='computeTotalPrice(document.form)'></td>
-							<td><input size='7' type=text name=judge_3
-								onBlur='ranks(tbody01, document.form)' value='0' style='text-align:center;'
-								onChange='computeTotalPrice(document.form)'></td>
-							<td><input size='7' type=text name=judge_4
-								onBlur='ranks(tbody01, document.form)' value='0' style='text-align:center;'
-								onChange='computeTotalPrice(document.form)'></td>
-							<td><input size='7' type=text name=judge_5
-								onBlur='ranks(tbody01, document.form)' value='0' style='text-align:center;'
-								onChange='computeTotalPrice(document.form)'></td>
-							<td><input size='7' style='text-align:center;' type=text name=total readOnly /></td>
-							<td><input size='7' style='text-align:center;' type=text name=rank readOnly></td>
-							<td><input type=button name=_delRow value='   '></td>
-						</tr>
-					</tbody>
-				</table> 	
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="logo">
+				<span class="icon fa-diamond"></span>
 			</div>
-		</form>
+			<div class="content">
+				<div class="inner">
+					<h1>Jiyeon Hwang</h1>
+					<p>
+						A fully responsive site template designed by <a
+							href="https://html5up.net">HTML5 UP</a> and released<br /> for
+						free under the <a href="#">Creative
+							Commons</a> license.
+					</p>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#intro">Intro</a></li>
+					<li><a href="#work">Work</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<!--<li><a href="#elements">Elements</a></li>-->
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Intro -->
+			<article id="intro">
+				<h2 class="major">Intro</h2>
+				<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+				<p>
+					Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
+					aliquam facilisis ante interdum congue. Integer mollis, nisl amet
+					convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
+					magna finibus nisi nec lacinia. Nam maximus erat id euismod
+					egestas. By the way, check out my <a href="#work">awesome work</a>.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+					dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
+					torquent per conubia nostra, per inceptos himenaeos. Etiam
+					tristique libero eu nibh porttitor fermentum. Nullam venenatis erat
+					id vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
+					Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae
+					dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in
+					lectus. Pellentesque habitant morbi tristique senectus et netus et
+					malesuada fames ac turpis egestas. In non lorem sit amet elit
+					placerat maximus. Pellentesque aliquam maximus risus, vel sed
+					vehicula.</p>
+			</article>
+
+			<!-- Work -->
+			<article id="work">
+				<h2 class="major">Work</h2>
+				<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+				<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim
+					arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat.
+					Praesent urna nisi, fringila lorem et vehicula lacinia quam.
+					Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+				<p>Nullam et orci eu lorem consequat tincidunt vivamus et
+					sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
+					pharetra. Pellentesque condimentum sem. In efficitur ligula tate
+					urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum
+					dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et
+					sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet
+					feugiat tempus.</p>
+			</article>
+
+			<!-- About -->
+			<article id="about">
+				<h2 class="major">About</h2>
+				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+				<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit.
+					Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac.
+					Aliquam erat volutpat. Praesent urna nisi, fringila lorem et
+					vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus
+					ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in
+					faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum
+					dolor sit amet.</p>
+			</article>
+
+			<!-- Contact -->
+			<article id="contact">
+				<h2 class="major">Contact</h2>
+				<form method="post" action="#">
+					<div class="field half first">
+						<label for="name">Name</label> <input type="text" name="name"
+							id="name" />
+					</div>
+					<div class="field half">
+						<label for="email">Email</label> <input type="text" name="email"
+							id="email" />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="4"></textarea>
+					</div>
+					<ul class="actions">
+						<li><input type="submit" value="Send Message" class="special" /></li>
+						<li><input type="reset" value="Reset" /></li>
+					</ul>
+				</form>
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter"><span
+							class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span
+							class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram"><span
+							class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</article>
+
+			<!-- Elements -->
+			<article id="elements">
+				<h2 class="major">Elements</h2>
+
+				<section>
+					<h3 class="major">Text</h3>
+					<p>
+						This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i>
+						and this is <em>emphasized</em>. This is <sup>superscript</sup>
+						text and this is <sub>subscript</sub> text. This is <u>underlined</u>
+						and this is code:
+						<code>for (;;) { ... }</code>
+						. Finally, <a href="#">this is a link</a>.
+					</p>
+					<hr />
+					<h2>Heading Level 2</h2>
+					<h3>Heading Level 3</h3>
+					<h4>Heading Level 4</h4>
+					<h5>Heading Level 5</h5>
+					<h6>Heading Level 6</h6>
+					<hr />
+					<h4>Blockquote</h4>
+					<blockquote>Fringilla nisl. Donec accumsan interdum
+						nisi, quis tincidunt felis sagittis eget tempus euismod.
+						Vestibulum ante ipsum primis in faucibus vestibulum. Blandit
+						adipiscing eu felis iaculis volutpat ac adipiscing accumsan
+						faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum
+						dolor sit amet nullam adipiscing eu felis.</blockquote>
+					<h4>Preformatted</h4>
+					<pre>
+						<code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3 class="major">Lists</h3>
+
+					<h4>Unordered</h4>
+					<ul>
+						<li>Dolor pulvinar etiam.</li>
+						<li>Sagittis adipiscing.</li>
+						<li>Felis enim feugiat.</li>
+					</ul>
+
+					<h4>Alternate</h4>
+					<ul class="alt">
+						<li>Dolor pulvinar etiam.</li>
+						<li>Sagittis adipiscing.</li>
+						<li>Felis enim feugiat.</li>
+					</ul>
+
+					<h4>Ordered</h4>
+					<ol>
+						<li>Dolor pulvinar etiam.</li>
+						<li>Etiam vel felis viverra.</li>
+						<li>Felis enim feugiat.</li>
+						<li>Dolor pulvinar etiam.</li>
+						<li>Etiam vel felis lorem.</li>
+						<li>Felis enim et feugiat.</li>
+					</ol>
+					<h4>Icons</h4>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span
+								class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span
+								class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span
+								class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span
+								class="label">Github</span></a></li>
+					</ul>
+
+					<h4>Actions</h4>
+					<ul class="actions">
+						<li><a href="#" class="button special">Default</a></li>
+						<li><a href="#" class="button">Default</a></li>
+					</ul>
+					<ul class="actions vertical">
+						<li><a href="#" class="button special">Default</a></li>
+						<li><a href="#" class="button">Default</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 class="major">Table</h3>
+					<h4>Default</h4>
+					<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Item One</td>
+									<td>Ante turpis integer aliquet porttitor.</td>
+									<td>29.99</td>
+								</tr>
+								<tr>
+									<td>Item Two</td>
+									<td>Vis ac commodo adipiscing arcu aliquet.</td>
+									<td>19.99</td>
+								</tr>
+								<tr>
+									<td>Item Three</td>
+									<td>Morbi faucibus arcu accumsan lorem.</td>
+									<td>29.99</td>
+								</tr>
+								<tr>
+									<td>Item Four</td>
+									<td>Vitae integer tempus condimentum.</td>
+									<td>19.99</td>
+								</tr>
+								<tr>
+									<td>Item Five</td>
+									<td>Ante turpis integer aliquet porttitor.</td>
+									<td>29.99</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="2"></td>
+									<td>100.00</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+
+					<h4>Alternate</h4>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Item One</td>
+									<td>Ante turpis integer aliquet porttitor.</td>
+									<td>29.99</td>
+								</tr>
+								<tr>
+									<td>Item Two</td>
+									<td>Vis ac commodo adipiscing arcu aliquet.</td>
+									<td>19.99</td>
+								</tr>
+								<tr>
+									<td>Item Three</td>
+									<td>Morbi faucibus arcu accumsan lorem.</td>
+									<td>29.99</td>
+								</tr>
+								<tr>
+									<td>Item Four</td>
+									<td>Vitae integer tempus condimentum.</td>
+									<td>19.99</td>
+								</tr>
+								<tr>
+									<td>Item Five</td>
+									<td>Ante turpis integer aliquet porttitor.</td>
+									<td>29.99</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="2"></td>
+									<td>100.00</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</section>
+
+				<section>
+					<h3 class="major">Buttons</h3>
+					<ul class="actions">
+						<li><a href="#" class="button special">Special</a></li>
+						<li><a href="#" class="button">Default</a></li>
+					</ul>
+					<ul class="actions">
+						<li><a href="#" class="button">Default</a></li>
+						<li><a href="#" class="button small">Small</a></li>
+					</ul>
+					<ul class="actions">
+						<li><a href="#" class="button special icon fa-download">Icon</a></li>
+						<li><a href="#" class="button icon fa-download">Icon</a></li>
+					</ul>
+					<ul class="actions">
+						<li><span class="button special disabled">Disabled</span></li>
+						<li><span class="button disabled">Disabled</span></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3 class="major">Form</h3>
+					<form method="post" action="#">
+						<div class="field half first">
+							<label for="demo-name">Name</label> <input type="text"
+								name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+						</div>
+						<div class="field half">
+							<label for="demo-email">Email</label> <input type="email"
+								name="demo-email" id="demo-email" value=""
+								placeholder="jane@untitled.tld" />
+						</div>
+						<div class="field">
+							<label for="demo-category">Category</label>
+							<div class="select-wrapper">
+								<select name="demo-category" id="demo-category">
+									<option value="">-</option>
+									<option value="1">Manufacturing</option>
+									<option value="1">Shipping</option>
+									<option value="1">Administration</option>
+									<option value="1">Human Resources</option>
+								</select>
+							</div>
+						</div>
+						<div class="field half first">
+							<input type="radio" id="demo-priority-low" name="demo-priority"
+								checked> <label for="demo-priority-low">Low</label>
+						</div>
+						<div class="field half">
+							<input type="radio" id="demo-priority-high" name="demo-priority">
+							<label for="demo-priority-high">High</label>
+						</div>
+						<div class="field half first">
+							<input type="checkbox" id="demo-copy" name="demo-copy"> <label
+								for="demo-copy">Email me a copy</label>
+						</div>
+						<div class="field half">
+							<input type="checkbox" id="demo-human" name="demo-human" checked>
+							<label for="demo-human">Not a robot</label>
+						</div>
+						<div class="field">
+							<label for="demo-message">Message</label>
+							<textarea name="demo-message" id="demo-message"
+								placeholder="Enter your message" rows="6"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message"
+								class="special" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</form>
+				</section>
+
+			</article>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">
+				&copy; Untitled. Design: HTML5 UP
+			</p>
+		</footer>
+
 	</div>
-	<div class='t4'> 
-				<input type=button class=upd onClick="indexing2(tbody01, document.form)" value=' 순서 정렬 '>
-				<input type=button class=upd onClick="ranking(tbody01, document.form)" value=' 등수 정렬 '>
-				<input type='button' class=upd onClick="naming(tbody01, document.form)" value = ' 이름 정렬 '>
-				<input type='button' class=upd id="btnExport" onClick="fnExcelReport(tbody01, document.form)" value = ' 엑셀로 내보내기 '> 
-	</div>
-	<iframe id="txtArea1" style="display:none"></iframe>
+
+	<!-- BG -->
+	<div id="bg"></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>
