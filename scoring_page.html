@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="style.css" type="text/css" id="" media="print, projection, screen" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
 <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
-<title>젼짱</title>
+<title>합계 및 등수 계산 프로그램</title>
 <script type="text/javascript"> 
 	function addRow(tbody, form) {
 		var oRow = table.insertRow();
@@ -23,7 +23,7 @@
 		var oCell10 = oRow.insertCell();
 		oCell1.innerHTML = "<input size='3' style='text-align:center;' type='text' name='index' readOnly>";
 		oCell2.innerHTML = "<input size='7' style='text-align:center;' type='text' name='p_name'>";
-		oCell3.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_1' value='0' onBlue='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
+		oCell3.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_1' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
 		oCell4.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_2' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
 		oCell5.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_3' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
 		oCell6.innerHTML = "<input size='7' style='text-align:center;' type='text' name='judge_4' value='0' onBlur='ranks(tbody01, document.form);' onChange='computeTotalPrice(document.form)' style='text-align:right;'>";
@@ -380,11 +380,11 @@
 						<tr> 
 							<th width='10'>
 								<button type=button onClick="indexing2(tbody01, document.form)" class='intotal'>
-								순서 <i class="fa fa-caret-down"></i></button>
+								순서 <i class="fa fa-caret-up"></i></button>
 							</th>
 							<th width='10'>
 								<button type=button onClick="naming(tbody01, document.form)" class='intotal'>
-								이름 <i class="fa fa-caret-down"></i></button>
+								이름 <i class="fa fa-caret-up"></i></button>
 							</th>
 							<th width='10'>심사위원1</th>
 							<th width='10'>심사위원2</th>
@@ -393,7 +393,7 @@
 							<th width='10'>심사위원5</th>
 							<th width='5'>
 								<button type=button onClick="ranking(tbody01, document.form)" class='intotal'>
-								합계 <i class="fa fa-caret-up"></i></button>
+								합계 <i class="fa fa-caret-down"></i></button>
 							</th>
 							<th width='5'>등수</th>
 							<td><input type=button value=" + " onClick="addRow(tbody01, document.form)"></td>
@@ -427,11 +427,9 @@
 			</div>
 		</form>
 	</div>
-	<div class='t4'> 
-				<input type=button class=upd onClick="indexing2(tbody01, document.form)" value=' 순서 정렬 '>
-				<input type=button class=upd onClick="ranking(tbody01, document.form)" value=' 등수 정렬 '>
-				<input type='button' class=upd onClick="naming(tbody01, document.form)" value = ' 이름 정렬 '>
-				<input type='button' class=upd id="btnExport" onClick="fnExcelReport(tbody01, document.form)" value = ' 엑셀로 내보내기 '> 
+	<div class='t4' style='text-align:center;'>  
+			<button type=button id=btnExport class=upd onClick="fnExcelReport(tbody01, document.form)">
+			<i class="fa fa-file-excel-o" aria-hidden="true">    </i>  엑셀로 내보내기</button>
 	</div>
 	<iframe id="txtArea1" style="display:none"></iframe>
 </body>
